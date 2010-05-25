@@ -1,5 +1,6 @@
 package org.wiztools.fileupload;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -31,6 +32,10 @@ public class ServletIndex extends HttpServlet {
             return;
         }
         final Part part = req.getPart("file");
+        File f = new File("/tmp/test.ext");
+        if(f.exists()){
+            f.delete();
+        }
         part.write("test.ext");
         final String parameter = req.getParameter("param");
 
